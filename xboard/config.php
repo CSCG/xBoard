@@ -24,9 +24,9 @@ $settings = array(
 	"salt" => "4seIO93D4jnEj3",				// Site Salt to break hacking attempts. THIS NEEDS TO BE CHANGED!
 	"threadDisplay" => 20,					// Amount of threads on the home page
 	"recaptcha" => false,					// Turn reCaptcha on or off (true|false)
-	"publicRecaptcha" => "6Lex5OQSAAAAAOWUPB8TcWQPAM-jr_bOAQXBaNvQ",
+	"publicRecaptcha" => "",
 											// Public recaptcha key
-	"privateRecaptcaha" => "6Lex5OQSAAAAADjf7ZIP-8i9q4YORvnOGvE2Fvu2",
+	"privateRecaptcaha" => "",
 											// Private recaptcha key
 );
 ?>
