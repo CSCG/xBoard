@@ -39,39 +39,20 @@ function newPost($id="",$post=array()){
 
 	$id = is_numeric($id) ? $id : time();
 
-	if($settings["storageType"]=="database"){
-		$postObject = R::dispense('post');
-		$postObject->import($post);
-		R::store($postObject);
-
-		$threadObject = R::load('thread', $id);
-		if (!$threadObject->id){
-			$threadObject->id = time();
-			$threadObject->count = 0;
-			$threadObject->author = $user['name'];
-			$threadObject->title = $post['title']!="" ? $post['title'] : substr($post['post'], 0, 150);
-		}
-		$threadObject->count++;
-		$threadObject->ownPosts[] = $post;
-		$threadObject->updated = time();
-		R::store($threadObject);
-
+	$file = BASE."/{$settings["storageLocation"]}/{$id}.json";
+	if(file_exists($file)){
+		$thread = json_decode(file_get_contents($file),true);
 	}else{
-		$file = BASE."/{$settings["storageLocation"]}/{$id}.json";
-		if(file_exists($file)){
-			$thread = json_decode(file_get_contents($file),true);
-		}else{
-			$thread = array(
-				'id'=>time(),
-				'count'=>0,
-				'title'=>($post['title']!="" ? $post['title'] : substr($post['post'], 0, 150)),
-				'author'=>$user['name']);
-		}
-		$thread['updated'] = time();
-		$thread['posts'][] = $post;
-		$thread['count']++;
-		file_put_contents($file, json_encode($thread));
+		$thread = array(
+			'id'=>time(),
+			'count'=>0,
+			'title'=>($post['title']!="" ? $post['title'] : substr($post['post'], 0, 150)),
+			'author'=>$user['name']);
 	}
+	$thread['updated'] = time();
+	$thread['posts'][] = $post;
+	$thread['count']++;
+	file_put_contents($file, json_encode($thread));
 }
 
 ?>

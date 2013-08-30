@@ -22,12 +22,6 @@ $m = new Mustache_Engine(array(
 	'partials_loader' => new Mustache_Loader_FilesystemLoader(BASE."/templates/partials")
 ));
 
-//If we are using a db, lets setup a connection
-if($settings["storageType"]=="db"){
-	require_once(BASE."/vendor/storage/rb.php");
-	R::setup($settings["storageLocation"],$settings["databaseUser"],$settings["databasePass"]);
-}
-
 //If we are using recaptcha (You shouldn't need to unless you remove the spam protection)
 if($settings["recaptcha"]){
 	require_once(BASE."/vendor/recaptcha/recaptchalib.php");

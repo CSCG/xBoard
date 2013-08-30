@@ -19,7 +19,7 @@ session_start();
 $user = json_decode(base64_decode(urldecode($_COOKIE['session'])),true);
 
 //Trying to hack? Lets just destroy your credentials then
-if(sha1($user['name'].$user['secret'].$setting['name']) != $user['hash'])
+if(sha1($user['name'].$user['secret'].$setting['siteSalt']) != $user['hash'])
 	$user['secret'] = "";
 
 
@@ -29,8 +29,8 @@ if($user['name']=="" || getVar('name')!="")
 if($user['secret']=="")
 	$user['secret'] = makeSalt();
 
-if($user['hash']=="" || sha1($user['name'].$user['secret'].$setting['name']) != $user['hash'])
-	$user['hash'] = sha1($user['name'].$user['secret'].$setting['name']);
+if($user['hash']=="" || sha1($user['name'].$user['secret'].$setting['siteSalt']) != $user['hash'])
+	$user['hash'] = sha1($user['name'].$user['secret'].$setting['siteSalt']);
 
 $_SESSION['name'] = $user['name'];
 $_SESSION['secret'] = $user['secret'];
