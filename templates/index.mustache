@@ -20,14 +20,11 @@
 			<h2>New thread</h2>
 			<form class="form-horizontal" id="threadform" action="/post" method="post" enctype="multipart/form-data">
 					<div class="row">
-						<div class="col-lg-4">
+						<div class="col-lg-6">
 							<input type="text" name="title" size="46" maxlength="100" placeholder="Title:">
 						</div>
-						<div class="col-lg-4">
+						<div class="col-lg-6">
 							<input type="text" name="name" placeholder="Name" value="{{#user}}{{name}}{{/user}}">
-						</div>
-						<div class="col-lg-4">
-							<input type="password" name="pass" placeholder="Password" value="{{#user}}{{pass}}{{/user}}">
 						</div>
 					</div>
 					<div class="row" style="display:none;">

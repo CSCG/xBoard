@@ -13,6 +13,7 @@ $settings = array(
 	"siteFavicon" => "favicon.ico"	,		// Site favicon
 	"adminPass" => "ChangeMe!",				// Admin Password. THIS NEEDS TO BE CHANGED!
 	"indexName" => "index.html",			// This is the generated 'front' page
+	"anonymousUser" => "Anon",				// Anonymous Default Username
 	"storageType" => "file",				// (file|database)
 											// Database requires > MySQL 5 or > SQLite 3.6.19 or > PostgreSQL 8
 	"storageLocation" => "data",			// If file, give the folder the data will be stored in
@@ -29,4 +30,5 @@ $settings = array(
 	"privateRecaptcaha" => "",
 											// Private recaptcha key
 );
+
 ?>

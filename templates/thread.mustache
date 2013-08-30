@@ -19,7 +19,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<p>{{post}}</p>
-					<p><small class="muted">User: {{name}} | Posted: <span class="unixtime" data-timestamp="{{updated}}"></span></small></p>
+					<p><small class="muted">User: {{name}} ({{secret}}) | Posted: <span class="unixtime" data-timestamp="{{updated}}"></span></small></p>
 				</div>
 			</div>
 			<hr>
@@ -28,11 +28,8 @@
 			<h2>Post Reply</h2>
 			<form class="form-horizontal" id="threadform" action="/post/{{id}}" method="post" enctype="multipart/form-data">
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-lg-12">
 							<input type="text" name="name" placeholder="Name" value="{{#user}}{{name}}{{/user}}">
-						</div>
-						<div class="col-lg-6">
-							<input type="password" name="pass" placeholder="Password" value="{{#user}}{{pass}}{{/user}}">
 						</div>
 					</div>
 					<div class="row" style="display:none;">

@@ -23,7 +23,6 @@ function submitNewPost($id="", $post=array()){
 		die ("You are a bot");
 
 	unset($post["email"]);
-	unset($post['pass']);
 	unset($post['recaptcha_challenge_field']);
 	unset($post['recaptcha_response_field']);
 
