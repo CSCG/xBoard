@@ -12,23 +12,15 @@
 
 include("xboard/init.php");
 
-if(is_numeric($var[1])){ // Viewing a thread?
-	$id = is_numeric($var[1]) ? $var[1] : false;
-	if($id)
-		viewThread($id);
-	else
-		buildIndex();
-}elseif($var[1]=="post"){ // Making a post
-	$post = array_merge($_POST, $user);
+if($var[1]=="post"){ // Making a post
 	$id = is_numeric($var[2]) ? $var[2] : time();
-	submitNewPost($id, $post);
+	submitNewPost($id, $_POST);
+}elseif($var[1]=="build"){ // Build the Index Page
 	buildIndex();
-	if($var[2]!="")
-		goToThread($id);
-	else
-		goToIndex();
+	goToIndex();
+}elseif(is_numeric($var[1])){ // Viewing a thread?
+	viewThread($var[1]);
 }else{ // Everything else
-	buildIndex();
 	goToIndex();
 }
 

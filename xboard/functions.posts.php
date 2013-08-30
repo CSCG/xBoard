@@ -8,6 +8,9 @@
 
 function submitNewPost($id="", $post=array()){
 	global $settings,$user;
+
+	$post = array_merge($post, $user);
+
 	if($settings['recaptcha']){
 		$resp = recaptcha_check_answer (
 			$settings["privateRecaptcaha"],
@@ -30,11 +33,14 @@ function submitNewPost($id="", $post=array()){
 	$post['userip'] = $_SERVER['REMOTE_ADDR'];
 	$post['time']=time();
 
-	if(trim($post['post'])!="" && !empty($post['post']) && $user['name']!="")
-		newPost($id,$post);
+	if(trim($post['post'])!="" && !empty($post['post']) && $user['name']!=""){
+		createNewPost($id,$post);
+		goToThread($id);
+	}else
+		goToIndex();
 }
 
-function newPost($id="",$post=array()){
+function createNewPost($id="",$post=array()){
 	global $settings,$user;
 
 	$id = is_numeric($id) ? $id : time();
@@ -52,7 +58,8 @@ function newPost($id="",$post=array()){
 	$thread['updated'] = time();
 	$thread['posts'][] = $post;
 	$thread['count']++;
-	file_put_contents($file, json_encode($thread));
+	file_put_contents($file, json_encode($thread));+
+	buildIndex();
 }
 
 ?>

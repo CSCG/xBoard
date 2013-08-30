@@ -27,11 +27,11 @@ function makeSalt(){
 
 function goToIndex(){
 	global $settings;
-	header("Location: /{$settings["indexName"]}");
+	header("Location: {$settings["siteURL"]}/{$settings["indexName"]}");
 }
 
 function goToThread($id){
-	header("Location: /{$id}");
+	header("Location: {$settings["siteURL"]}/{$id}");
 }
 
 ?>

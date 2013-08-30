@@ -13,6 +13,7 @@ $settings = array(
 	"siteFavicon" => "favicon.ico"	,		// Site favicon
 	"adminPass" => "ChangeMe!",				// Admin Password. THIS NEEDS TO BE CHANGED!
 	"siteSalt" => "4seIO93D4jnEj3",			// Site Salt to break hacking attempts. THIS NEEDS TO BE CHANGED!
+	"siteURL" => "http://wtpaf.com",		// Site URL for redirection, etc
 	"indexName" => "index.html",			// This is the generated 'front' page
 	"anonymousUser" => "Anon",				// Anonymous Default Username
 	"storageType" => "file",				// (file|database)
