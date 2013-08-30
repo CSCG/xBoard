@@ -1,0 +1,12 @@
+.title {
+	color: black;
+	font-weight: bold;
+}
+.title:hover{
+	text-decoration: none;
+	color:black;
+	font-weight: bold;
+}
+.muted {
+	color: grey;
+}
