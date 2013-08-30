@@ -13,8 +13,7 @@ function readThread($id=""){
 	if(file_exists($file)){
 		$thread = json_decode(file_get_contents($file),true);
 	}else{
-		file_put_contents($file, json_encode(""));
-		$thread = array();
+		goToIndex();
 	}
 	return $thread;
 }
@@ -38,10 +37,7 @@ function getThreads(){
 	foreach($threadList as $file => $updated){
 		if($count>=$start && $count < $start + $settings["threadDisplay"]){
 			$thread = json_decode(file_get_contents($file),true);
-			if(empty($thread))
-				unlink($file);
-			else
-				$threads[] = $thread;
+			$threads[] = $thread;
 		}
 	}
 	return $threads;
