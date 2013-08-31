@@ -18,6 +18,7 @@ Change files in xboard/config.php
 nginx specific settings
 -----------------------
 for your site settings, use the code below
+
     server{
 
             listen   80;
