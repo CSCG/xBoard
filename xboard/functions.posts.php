@@ -9,6 +9,8 @@
 function submitNewPost($id="", $post=array()){
 	global $settings,$user;
 
+	$user['useragent'] = $_SERVER['HTTP_USER_AGENT'];
+	$user['userip'] = $_SERVER['REMOTE_ADDR'];
 	$post = array_merge($post, $user);
 
 	if($settings['recaptcha']){
@@ -24,13 +26,11 @@ function submitNewPost($id="", $post=array()){
 
 	if($post["email"]!="")
 		die ("You are a bot");
-
-	unset($post["email"]);
+	unset($post['pass']);
+	unset($post['email']);
 	unset($post['recaptcha_challenge_field']);
 	unset($post['recaptcha_response_field']);
 
-	$post['useragent'] = $_SERVER['HTTP_USER_AGENT'];
-	$post['userip'] = $_SERVER['REMOTE_ADDR'];
 	$post['time']=time();
 
 	if(trim($post['post'])!="" && !empty($post['post']) && $user['name']!=""){
@@ -52,8 +52,8 @@ function createNewPost($id="",$post=array()){
 		$thread = array(
 			'id'=>time(),
 			'count'=>0,
-			'title'=>($post['title']!="" ? $post['title'] : substr($post['post'], 0, 150)),
-			'author'=>$user['name']);
+			'title'=>($post['title']!="" ? $post['title'] : substr($post['post'], 0, 150)));
+		$thread = array_merge($thread,$user);
 	}
 	$thread['updated'] = time();
 	$thread['posts'][] = $post;

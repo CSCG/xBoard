@@ -1,3 +1,64 @@
+@import url('//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700');
+
+body{
+	font-family:"Open Sans",Calibri,Verdana,Arial,sans-serif;
+	font-size:16px;
+	line-height:20px;
+}
+
+.alert {
+	color: #b94a48;
+	background-color: #f2dede;
+	border-color: #eed3d7;
+	padding: 0.3em 1em;
+}
+
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+.text-right {
+	text-align: right;
+}
+
+.border {
+	border-color: silver;
+	border-style: solid;
+	border-width: 0px;
+}
+	.border-top {
+		border-top-width: 1px;
+		padding-top: .5em;
+	}
+	.border-bottom {
+		border-bottom-width: 1px;
+		padding-bottom: .5em;
+	}
+	.border-right {
+		border-right-width: 1px;
+		padding-right: .5em;
+	}
+	.border-left {
+		border-left-width: 1px;
+		padding-left: .5em;
+	}
+	.border-all {
+		border-width: 1px;
+		padding: .5em;
+	}
+
+.box {
+	padding: 0;
+}
+	.box-sm {
+		padding: 10px;
+	}
+	.box-lg {
+		padding: 25px;
+	}
+
 .title {
 	color: black;
 	font-weight: bold;

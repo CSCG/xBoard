@@ -1,0 +1,17 @@
+{{>adminHead}}
+	{{>adminMenu}}
+	<div class="container">
+		{{#threads}}
+			<div class="row">
+				<div class="col-lg-12">
+					<h3>
+						<a href="/xadmin.php?action=view&thread={{id}}" rel="nofollow">{{title}}</a> -
+						<small><a href="/xadmin.php?action=delete&thread={{id}}" rel="nofollow">Delete</a></small>
+					</h3>
+					<p>By: {{name}} - <a href="{{siteURL}}/xadmin.php?action=ban&ip={{userip}}">Ban</a> | Posts: {{count}} | <span class="unixtime" data-timestamp="{{updated}}"></span></p>
+				</div>
+			</div>
+			<hr>
+		{{/threads}}
+	</div>
+{{>foot}}

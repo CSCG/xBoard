@@ -15,7 +15,18 @@ function readThread($id=""){
 	}else{
 		goToIndex();
 	}
+	foreach($thread["posts"] as $key=>$post){
+		$thread["posts"][$key]["key"]=$key;
+	}
+
 	return $thread;
+}
+
+function saveThread($id="", $thread){
+	global $settings;
+	$id = is_numeric($id) ? $id : time();
+	$file = BASE."/{$settings["storageLocation"]}/{$id}.json";
+	file_put_contents($file, json_encode($thread));
 }
 
 function getThreads(){
@@ -32,12 +43,14 @@ function getThreads(){
 		}
 		closedir($handle);
 	}
-	arsort($threadList);
-	$count = 0;
-	foreach($threadList as $file => $updated){
-		if($count>=$start && $count < $start + $settings["threadDisplay"]){
-			$thread = json_decode(file_get_contents($file),true);
-			$threads[] = $thread;
+	if(!empty($threadList)){
+		arsort($threadList);
+		$count = 0;
+		foreach($threadList as $file => $updated){
+			if($count>=$start && $count < $start + $settings["threadDisplay"]){
+				$thread = json_decode(file_get_contents($file),true);
+				$threads[] = $thread;
+			}
 		}
 	}
 	return $threads;

@@ -7,6 +7,7 @@ define("BASE", $settings["baseDir"]);
 
 $path = explode("?", $_SERVER['REQUEST_URI']);
 $var = explode("/", $path[0]);
+$action = $_REQUEST["action"];
 
 //Lets register our vendor modules
 require_once(BASE."/xboard/functions.php");

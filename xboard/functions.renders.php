@@ -12,7 +12,7 @@ function buildIndex(){
 	$data['user'] = $user;
 	$data = array_merge($data,$settings);
 	$index = $m->render("index",$data);
-	file_put_contents($settings["indexName"], $index);
+	file_put_contents($settings["siteIndex"], $index);
 }
 
 function viewThread($id){

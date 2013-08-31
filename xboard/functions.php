@@ -12,10 +12,6 @@
  * out to make everything easier to follow
  */
 
-function getVar($var){
-	return isset($_SESSION[$var]) && $_SESSION[$var] != "" ? $_SESSION[$var] : (isset($_COOKIE[$var]) && $_COOKIE[$var] != "" ? $_COOKIE[$var] : (isset($_REQUEST[$var]) ? $_REQUEST[$var] : false));
-}
-
 function makeSalt(){
 	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	$randstring = '';
@@ -27,11 +23,16 @@ function makeSalt(){
 
 function goToIndex(){
 	global $settings;
-	header("Location: {$settings["siteURL"]}/{$settings["indexName"]}");
+	header("Location: {$settings["siteURL"]}/{$settings["siteIndex"]}");
 }
 
 function goToThread($id){
 	header("Location: {$settings["siteURL"]}/{$id}");
+}
+
+function goToAdmin($actions){
+	global $settings;
+	header("Location: {$settings["siteURL"]}/admin.php{$actions}");
 }
 
 ?>

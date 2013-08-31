@@ -1,5 +1,4 @@
 {{>head}}
-<body class="mainpage">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -11,7 +10,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h2>{{title}}</h2>
-				<p>Last Updated: <span class="unixtime" data-timestamp="{{updated}}"></span> | Posts: {{count}} | Author: {{author}}</p>
+				<!--<p>Last Updated: <span class="unixtime" data-timestamp="{{updated}}"></span> | Posts: {{count}} | User: {{name}}</p>-->
 			</div>
 		</div>
 		<hr>
@@ -19,7 +18,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<p>{{post}}</p>
-					<p><small class="muted">User: {{name}} ({{secret}}) | Posted: <span class="unixtime" data-timestamp="{{updated}}"></span></small></p>
+					<p><small class="muted">User: {{name}} ({{secret}}) | Posted: <span class="unixtime" data-timestamp="{{time}}"></span></small></p>
 				</div>
 			</div>
 			<hr>
@@ -63,10 +62,5 @@
 			</div>
 		</div>
 		{{/thread}}
-		<div class="row">
-			<hr />
-			<div id="footer">
-				 - <a href="#">Admin</a> -
-			</div>
-		</div>
+	</div>
 {{>foot}}

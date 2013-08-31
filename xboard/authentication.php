@@ -18,13 +18,12 @@ session_start();
 
 $user = json_decode(base64_decode(urldecode($_COOKIE['session'])),true);
 
+if($user['name']=="" || $_REQUEST['name']!="")
+	$user['name'] = isset($_REQUEST['name']) ? $_REQUEST['name'] : $settings['anonymousUser'];
+
 //Trying to hack? Lets just destroy your credentials then
 if(sha1($user['name'].$user['secret'].$setting['siteSalt']) != $user['hash'])
 	$user['secret'] = "";
-
-
-if($user['name']=="" || getVar('name')!="")
-	$user['name'] = getVar('name') ? getVar('name') : $settings['anonymousUser'];
 
 if($user['secret']=="")
 	$user['secret'] = makeSalt();
@@ -34,6 +33,10 @@ if($user['hash']=="" || sha1($user['name'].$user['secret'].$setting['siteSalt'])
 
 $_SESSION['name'] = $user['name'];
 $_SESSION['secret'] = $user['secret'];
+
+//If the admin is trying to login... lets update the session
+if(isset($_POST['adminPass']))
+	$_SESSION['adminHash'] = sha1($_POST['adminPass'].$settings['siteSalt']);
 
 setcookie("session",base64_encode(json_encode($user)), time()+60*60*24*30);
 
