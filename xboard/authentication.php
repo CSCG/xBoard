@@ -18,8 +18,8 @@ session_start();
 
 $user = json_decode(base64_decode(urldecode($_COOKIE['session'])),true);
 
-if($user['name']=="" || $_REQUEST['name']!="")
-	$user['name'] = isset($_REQUEST['name']) ? $_REQUEST['name'] : $settings['anonymousUser'];
+if($user['name']=="" || (isset($_POST['name']) && $_POST['name']!=""))
+	$user['name'] = isset($_POST['name']) ? $_POST['name'] : $settings['anonymousUser'];
 
 //Trying to hack? Lets just destroy your credentials then
 if(sha1($user['name'].$user['secret'].$setting['siteSalt']) != $user['hash'])
