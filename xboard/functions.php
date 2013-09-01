@@ -32,7 +32,7 @@ function goToThread($id){
 
 function goToAdmin($actions){
 	global $settings;
-	header("Location: {$settings["siteURL"]}/admin.php{$actions}");
+	header("Location: {$settings["siteURL"]}/xadmin.php{$actions}");
 }
 
 ?>

@@ -22,9 +22,9 @@ function readThread($id=""){
 	return $thread;
 }
 
-function saveThread($id="", $thread){
+function saveThread($id, $thread){
 	global $settings;
-	$id = is_numeric($id) ? $id : time();
+	$thread['posts'] = array_values($thread['posts']);
 	$file = BASE."/{$settings["storageLocation"]}/{$id}.json";
 	file_put_contents($file, json_encode($thread));
 }

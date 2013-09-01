@@ -44,7 +44,7 @@ function adminDelete($data){
 
 function adminView($data){
 	global $m, $settings;
-	$data['thread'] = readThread($data["thread"]);
+	$data['thread'] = readThread($data['thread']);
 	$data = array_merge($data,$settings);
 	echo $m->render("adminView",$data);
 }
